@@ -14,6 +14,7 @@ submitName.addEventListener("submit", e => {
     const heroContainer = `<h2>${heroName}</h2>`;
 
     inputName.value = "";
+    submitName.remove();
     main.insertAdjacentHTML('beforeend', heroContainer)
 })
 
