@@ -10,8 +10,21 @@ submitName.addEventListener("submit", e => {
     e.preventDefault();
 
     let heroName = inputName.value;
+    let hp = 100;
+    let heroHp = `HP: ${hp}`;
+    let level = 1;
+    let heroLvl = `Level: ${level}`;
 
-    const heroContainer = `<h2>${heroName}</h2>`;
+    const heroContainer = `
+        <div class="heroContainer">
+            <h2>${heroName}</h2>
+            <p>${heroHp}</p>
+            <p>${heroLvl}</p>
+            <button>Fight Wolf</button>
+            <button>Fight Wolf Boss</button>
+        </div>
+
+    `;
 
     inputName.value = "";
     submitName.remove();
