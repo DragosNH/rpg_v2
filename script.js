@@ -6,14 +6,16 @@ const inputName = document.querySelector(".inputName");
 
 const creatureName = creatures.find(creature => creature.id === 1).name;
 
+let hp = 100;
+let heroHp = `HP: ${hp}`;
+let level = 1;
+let heroLvl = `Level: ${level}`;
+
 submitName.addEventListener("submit", e => {
     e.preventDefault();
 
     let heroName = inputName.value;
-    let hp = 100;
-    let heroHp = `HP: ${hp}`;
-    let level = 1;
-    let heroLvl = `Level: ${level}`;
+
 
     const heroContainer = `
         <div class="heroContainer">
