@@ -6,10 +6,29 @@ const inputName = document.querySelector(".inputName");
 
 const creatureName = creatures.find(creature => creature.id === 1).name;
 
+const getCreature = id => {
+    let creatureName = creatures.find(creature => creature.id === id).name;
+    let creatureLvl = creatures.find(creature => creature.id === id).level;
+    let creatureHp = creatures.find(creature => creature.id === id).hp;
+    let creatureXp = creatures.find(creature => creature.id === id).xp;
+    let creatureDammage = creatures.find(creature => creature.id === id).dammage_dealing;
+
+    return `
+        <h2>Creature: ${creatureName}</h2>
+        <p>Level: ${creatureLvl}</p>
+        <p>HP: ${creatureHp}</p>
+        <p>XP drop: ${creatureXp}</p>
+    `
+}
+
+console.log(getCreature(1));
+
+
 let hp = 100;
 let heroHp = `HP: ${hp}`;
 let level = 1;
 let heroLvl = `Level: ${level}`;
+let count = 0;
 
 submitName.addEventListener("submit", e => {
     e.preventDefault();
@@ -22,8 +41,8 @@ submitName.addEventListener("submit", e => {
             <h2>${heroName}</h2>
             <p>${heroHp}</p>
             <p>${heroLvl}</p>
-            <button>Fight Wolf</button>
-            <button>Fight Wolf Boss</button>
+            <button class="woflFightBtn">Fight Wolf</button>
+            <button class="bossFightBtn">Fight Wolf Boss</button>
         </div>
 
     `;
@@ -31,5 +50,20 @@ submitName.addEventListener("submit", e => {
     inputName.value = "";
     submitName.remove();
     main.insertAdjacentHTML('beforeend', heroContainer)
+
+    const fightWolf = document.querySelector(".woflFightBtn");
+
+    const wolfContainer =  `${getCreature(1)}`
+
+    fightWolf.addEventListener("click", e => {
+        e.preventDefault();
+        if (count < 1){
+            main.insertAdjacentHTML('beforeend', wolfContainer)
+            count++;
+        }
+    });  
+    
+
+
 })
 
