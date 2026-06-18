@@ -7,6 +7,9 @@ const playerAttack = Math.floor((Math.random() * 5) + 2);
 
 const creatureName = creatures.find(creature => creature.id === 1).name;
 
+
+
+
 const getCreature = id => {
     let creatureName = creatures.find(creature => creature.id === id).name;
     let creatureLvl = creatures.find(creature => creature.id === id).level;
@@ -17,14 +20,14 @@ const getCreature = id => {
 
 
     let wolfContainer = `
-        <h2>Creature: ${creatureName}</h2>
-        <p>Level: ${creatureLvl}</p>
-        <p>HP: ${currentHp}</p>
-        <p>XP drop: ${creatureXp}</p>
-        <button class="fight">Attack</button>
+        <div class="creatureContainer">
+            <h2>${creatureName}</h2>
+            <p>Level: ${creatureLvl}</p>
+            <p>HP: ${currentHp}</p>
+            <p>XP drop: ${creatureXp}</p>
+            <button class="fight">Attack</button>
+        </div>
     `
-
-
 
     return wolfContainer
 }
