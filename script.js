@@ -3,6 +3,7 @@ import { creatures } from "./creatures.js";
 const main = document.querySelector("main");
 const submitName = document.querySelector(".submitName");
 const inputName = document.querySelector(".inputName");
+const playerAttack = Math.floor((Math.random() * 5) + 2);
 
 const creatureName = creatures.find(creature => creature.id === 1).name;
 
@@ -12,13 +13,20 @@ const getCreature = id => {
     let creatureHp = creatures.find(creature => creature.id === id).hp;
     let creatureXp = creatures.find(creature => creature.id === id).xp;
     let creatureDammage = creatures.find(creature => creature.id === id).dammage_dealing;
+    let currentHp = `${creatureHp}`
 
-    return `
+
+    let wolfContainer = `
         <h2>Creature: ${creatureName}</h2>
         <p>Level: ${creatureLvl}</p>
-        <p>HP: ${creatureHp}</p>
+        <p>HP: ${currentHp}</p>
         <p>XP drop: ${creatureXp}</p>
+        <button class="fight">Attack</button>
     `
+
+
+
+    return wolfContainer
 }
 
 console.log(getCreature(1));
@@ -53,16 +61,16 @@ submitName.addEventListener("submit", e => {
 
     const fightWolf = document.querySelector(".woflFightBtn");
 
-    const wolfContainer =  `${getCreature(1)}`
+    const wolfContainer = `${getCreature(1)}`
 
     fightWolf.addEventListener("click", e => {
         e.preventDefault();
-        if (count < 1){
+        if (count < 1) {
             main.insertAdjacentHTML('beforeend', wolfContainer)
             count++;
         }
-    });  
-    
+    });
+
 
 
 })
